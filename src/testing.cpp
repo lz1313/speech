@@ -95,23 +95,23 @@ void testing::readGMM(string buff)
 	{
 		can.push_back(it->first);
 	}
-	/*double u = mean(can);
-	double d = deviation(can, u);*/
+	//double u = mean(can);
+	//double d = deviation(can, u);
 	i = 0;
 	cout << "Input is [";
 	vector<double> weight_vec;
 	weight_vec = can;
 	double sum=0.0;
-	/*for (map<double, int>::reverse_iterator it = gmmmap.rbegin(); it != gmmmap.rend(); it++, i++)
+	for (map<double, int>::reverse_iterator it = gmmmap.rbegin(); it != gmmmap.rend(); it++, i++)
 	{
-		double weight = pow(E, Zscore(it->first, u, d));
+		double weight = it->first;//pow(E, Zscore(it->first, u, d));
 		weight_vec.push_back(weight);
 		sum+=weight;
-	}*/
+	}
 	i = 0;
 	for (map<double, int>::reverse_iterator it = gmmmap.rbegin(); it != gmmmap.rend(), i < CANDIDATE_SIZE; it++, i++)
 	{
-		double weight = pow(E,weight_vec[i])*pow(10,28);///*(double) weight_vec[i]/sum; */(double)(weight_vec[i]-weight_vec.back())/(weight_vec[0]-weight_vec.back());
+		double weight = weight_vec[i];///*(double) weight_vec[i]/sum;*/ (double)(weight_vec[i]-weight_vec.back())/(weight_vec[0]-weight_vec.back());
 		string symbol = _testphonemap[it->second];
 		int sym = _dic->operator[](symbol);
 		cout << symbol << ":" << weight << " ";

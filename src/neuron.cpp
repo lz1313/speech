@@ -76,7 +76,7 @@ void neuron::calc_el(kb* KB, dictionary* dic, map<int, neuron*>* np)
 			continue;
 		if (KB->KB_map2()[this->_symbol][n->symbol()]<0)
 			continue;
-		_el_now += (n->prev_el() + log(KB->KB_map()[this->_symbol][n->symbol()]) - log(KB->KB_map()[n->symbol()][this->_symbol]));// + BETA * log(n->el());
+		_el_now += (n->prev_el() + KB->KB_map2()[this->_symbol][n->symbol()] - KB->KB_map()[n->symbol()][this->_symbol]);// + BETA * log(n->el());
 	}
 	//if (_el_now < 0) _el_now = 0.0;
 }

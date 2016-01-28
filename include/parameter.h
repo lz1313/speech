@@ -1,7 +1,7 @@
 #define FIRE_THRESHOLD 100
 #define LEAK_RATE 0.1
 #define FIRE_RATE 0.6
-#define P0 (0.001)
+#define P0 (1)
 #define ALPHA 0.01
 #define BETA 0.1
 #define OOV 0

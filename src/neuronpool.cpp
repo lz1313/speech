@@ -145,11 +145,11 @@ void neuronpool::calc_neuron(kb* KB, dictionary* _dic)
 	while (i < 1)
 	{
 		double sum = 0.0;
-		for (map<int, neuron*>::iterator it = _pool.begin(); it != _pool.end(); it++)
+		/*for (map<int, neuron*>::iterator it = _pool.begin(); it != _pool.end(); it++)
 		{
 			if (it->second->el() < 0) it->second->el() = 0;
 			it->second->prev_el() = it->second->el();
-		}
+		}*/
 		for (map<int, neuron*>::iterator it = _pool.begin(); it != _pool.end(); it++)
 		{
 			it->second->calc_el(KB, _dic, &this->_pool);
@@ -173,7 +173,7 @@ void neuronpool::calc_neuron(kb* KB, dictionary* _dic)
 		for (int j = 0; j < current_el.size(); ++j)
 		{
 			neuron* n = this->findNeuronBySymbol(current_el[j].first);
-			if (n->el() > 0.0 &&n->isWord())
+			if (n->el() != 0.0 &&n->isWord())
 				for (int k = 0; k < n->wordsym().size(); ++k)
 				{
 					cout << "[" << n->wordsym()[k] << ":" << _dic->operator[](current_el[j].first) << "]" << " el: " << current_el[j].second << endl;
