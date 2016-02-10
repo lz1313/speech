@@ -8,7 +8,7 @@ ODIR=obj
 LDIR=lib
 LIBS=-lm
 BDIR=bin
-DEPS=$(ODIR)/dictionary.o $(ODIR)/kb.o $(ODIR)/trie.o $(ODIR)/neuron.o $(ODIR)/neuronpool.o $(ODIR)/topology.o 
+DEPS=$(ODIR)/dictionary.o $(ODIR)/kb.o $(ODIR)/neuron.o $(ODIR)/neuronpool.o $(ODIR)/topology.o 
 
 all: $(BDIR)/training $(BDIR)/testing
 
@@ -18,15 +18,13 @@ $(ODIR)/dictionary.o:$(SDIR)/dictionary.cpp $(IDIR)/dictionary.h
 	$(CXX) $(CFLAGS) $@ $<
 $(ODIR)/neuron.o:$(SDIR)/neuron.cpp $(IDIR)/neuron.h $(IDIR)/dictionary.h $(IDIR)/kb.h
 	$(CXX) $(CFLAGS) $@ $<
-$(ODIR)/trie.o:$(SDIR)/trie.cpp $(IDIR)/trie.h
+$(ODIR)/neuronpool.o:$(SDIR)/neuronpool.cpp $(IDIR)/neuronpool.h $(IDIR)/neuron.h $(IDIR)/dictionary.h $(IDIR)/kb.h 
 	$(CXX) $(CFLAGS) $@ $<
-$(ODIR)/neuronpool.o:$(SDIR)/neuronpool.cpp $(IDIR)/neuronpool.h $(IDIR)/neuron.h $(IDIR)/dictionary.h $(IDIR)/kb.h $(IDIR)/trie.h
+$(ODIR)/topology.o:$(SDIR)/topology.cpp $(IDIR)/topology.h $(IDIR)/dictionary.h 
 	$(CXX) $(CFLAGS) $@ $<
-$(ODIR)/topology.o:$(SDIR)/topology.cpp $(IDIR)/topology.h $(IDIR)/dictionary.h $(IDIR)/trie.h
+$(ODIR)/training.o:$(SDIR)/training.cpp $(IDIR)/training.h $(IDIR)/neuronpool.h $(IDIR)/dictionary.h $(IDIR)/kb.h  $(IDIR)/topology.h $(IDIR)/parameter.h
 	$(CXX) $(CFLAGS) $@ $<
-$(ODIR)/training.o:$(SDIR)/training.cpp $(IDIR)/training.h $(IDIR)/neuronpool.h $(IDIR)/dictionary.h $(IDIR)/kb.h $(IDIR)/trie.h $(IDIR)/topology.h $(IDIR)/parameter.h
-	$(CXX) $(CFLAGS) $@ $<
-$(ODIR)/testing.o:$(SDIR)/testing.cpp $(IDIR)/testing.h $(IDIR)/neuronpool.h $(IDIR)/dictionary.h $(IDIR)/kb.h $(IDIR)/trie.h $(IDIR)/topology.h $(IDIR)/parameter.h
+$(ODIR)/testing.o:$(SDIR)/testing.cpp $(IDIR)/testing.h $(IDIR)/neuronpool.h $(IDIR)/dictionary.h $(IDIR)/kb.h  $(IDIR)/topology.h $(IDIR)/parameter.h
 	$(CXX) $(CFLAGS) $@ $<
 
 $(BDIR)/training:$(ODIR)/training.o $(DEPS)

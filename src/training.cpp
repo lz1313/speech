@@ -7,7 +7,7 @@ training::training()
 	_np = new neuronpool();
 	_topo = new topology();
 	_kb = new kb();
-	_tr = new Trie();
+	//_tr = new Trie();
 }
 
 training::~training()
@@ -16,13 +16,13 @@ training::~training()
 	delete _np;
 	delete _topo;
 	delete _kb;
-	delete _tr;
+	//delete _tr;
 }
 void training::initialization(string path)
 {
 	_dic->readLexicon(path);
 	cout << "done readLexicon\n";
-	_np->generatePool(path, _dic, _tr);
+	_np->generatePool(path, _dic/*, _tr*/);
 	cout << "done generatePool\n";
 	_topo->addIntraWordLink(_dic);
 	cout << "done addIntraWordLink\n";

@@ -20,7 +20,7 @@ public:
 	void addNeuron(int symbol,string wordsym,bool wordmarker);
 	void deleteNeuron(int symbol);
 	void updateNeuronConnections(dictionary* _dic,int source, int target);
-	void generatePool(string path, dictionary* _dic, Trie* _tr);
+	void generatePool(string path, dictionary* _dic/*, Trie* _tr*/);
 	void constructElUpadateMap(dictionary* _dic, map<int, string> testphonemap);
 	void calc_neuron(kb* KB, dictionary* _dic);
 	void normalize();

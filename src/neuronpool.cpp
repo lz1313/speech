@@ -95,7 +95,7 @@ void neuronpool::deleteNeuron(int symbol)
 		_pool.erase(it);
 	}
 }
-void neuronpool::generatePool(string path, dictionary* _dic, Trie* _tr)
+void neuronpool::generatePool(string path, dictionary* _dic/*, Trie* _tr*/)
 {
 	ifstream in(path + "/lexicon.txt", std::ios::in);
 	char buffer[1024];

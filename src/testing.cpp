@@ -9,7 +9,7 @@ testing::testing()
 	_np = new neuronpool();
 	_topo = new topology();
 	_kb = new kb();
-	_tr = new Trie();
+	//_tr = new Trie();
 }
 
 testing::~testing()
@@ -18,7 +18,7 @@ testing::~testing()
 	delete _np;
 	delete _topo;
 	delete _kb;
-	delete _tr;
+	//delete _tr;
 }
 void testing::initialization(string path)
 {
@@ -26,7 +26,7 @@ void testing::initialization(string path)
 	cout << "done read lexicon\n";
 	this->constructphonemap(path);
 	cout << "done construct phone map \n";
-	_np->generatePool(path, _dic, _tr);
+	_np->generatePool(path, _dic/*, _tr*/);
 	cout << "done generate pool\n";
 	_topo->readTopo(path);
 	cout << "done read topo\n";
